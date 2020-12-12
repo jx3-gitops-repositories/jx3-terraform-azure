@@ -2,12 +2,12 @@ locals {
   jx_requirerments_interpolated_content = templatefile("${path.module}/jx-requirements.yml.tpl", {
 
     registry_name = "${module.registry.registry_name}.azurecr.io"
-
+    domain_name   = module.dns.domain
   })
 
-  jx_requirerments_split_content   = split("\n", local.jx_requirerments_interpolated_content)
-  jx_requirerments_compact_content = compact(local.jx_requirerments_split_content)
-  jx_requirerments_content         = join("\n", local.jx_requirerments_compact_content)
+  jx_requirements_split_content   = split("\n", local.jx_requirerments_interpolated_content)
+  jx_requirements_compact_content = compact(local.jx_requirements_split_content)
+  jx_requirements_content         = join("\n", local.jx_requirements_compact_content)
 }
 
 
@@ -17,7 +17,7 @@ resource "kubernetes_config_map" "jenkins_x_requirements" {
     namespace = "default"
   }
   data = {
-    "jx-requirements.yml" = local.jx_requirerments_content
+    "jx-requirements.yml" = local.jx_requirements_content
   }
 
   lifecycle {

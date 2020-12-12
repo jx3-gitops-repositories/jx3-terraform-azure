@@ -102,7 +102,7 @@ variable "logging_retention_days" {
 }
 
 // ----------------------------------------------------------------------------
-// Cluster variables
+// DNS variables
 // ---------------------------------------------------------------------------
 
 variable "apex_domain_integration_enabled" {
@@ -139,4 +139,29 @@ variable "subscription_id" {
   type        = string
   description = "The subscription id in which to create the Azure DNS zone"
   default     = ""
+}
+
+// ----------------------------------------------------------------------------
+// Secret storage variables
+// ---------------------------------------------------------------------------
+
+variable "key_vault_enabled" {
+  type        = string
+  description = "Flag to indicate whether to provision Azure Key Vault for secret storage"
+  default     = false
+}
+variable "key_vault_resource_group_name" {
+  type        = string
+  description = "Resouce group to create in which to place key vault"
+  default     = ""
+}
+variable "key_vault_name" {
+  type        = string
+  description = "Name of Azure Key Vault to create"
+  default     = ""
+}
+variable "key_vault_sku" {
+  type        = string
+  description = "SKU of the Key Vault resource to create. Valid values are standard or premium"
+  default     = "standard"
 }

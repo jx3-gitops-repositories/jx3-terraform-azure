@@ -93,6 +93,17 @@ module "dns" {
   subscription_id                 = local.subscription_id
 }
 
+module "secrets" {
+  source              = "github.com/chrismellard/terraform-jx-azurekeyvault?ref=main"
+  enabled             = var.key_vault_enabled
+  principal_id        = module.cluster.kubelet_identity_id
+  cluster_name        = local.cluster_name
+  resource_group_name = var.key_vault_resource_group_name
+  key_vault_name      = var.key_vault_name
+  key_vault_sku       = var.key_vault_sku
+  location            = var.location
+}
+
 output "connect" {
   description = "Connect to cluster"
   value       = module.cluster.connect

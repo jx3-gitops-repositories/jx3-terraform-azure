@@ -3,6 +3,8 @@ locals {
 
     registry_name = "${module.registry.registry_name}.azurecr.io"
     domain_name   = module.dns.domain
+    key_vault_enabled = var.key_vault_enabled
+    key_vault_name = module.secrets.key_vault_name
   })
 
   jx_requirements_split_content   = split("\n", local.jx_requirerments_interpolated_content)

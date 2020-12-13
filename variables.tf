@@ -117,12 +117,12 @@ variable "dns_enabled" {
 }
 variable "apex_domain_name" {
   type        = string
-  description = "The name of the parent/apex domain in which to create this domain zone, e.g. jenkins-x.io"
+  description = "The name of the parent/apex domain in which to create this domain zone, e.g. jenkins-x.io. Required if dns_enabled set to true"
   default     = ""
 }
 variable "domain_name" {
   type        = string
-  description = "The domain name of the zone to create, e.g. dev-subdomain"
+  description = "The domain name of the zone to create, e.g. dev-subdomain. Required if dns_enabled set to true"
   default     = ""
 }
 variable "apex_resource_group_name" {
@@ -132,7 +132,7 @@ variable "apex_resource_group_name" {
 }
 variable "dns_resource_group_name" {
   type        = string
-  description = "Resource group in which to create the Azure DNS zone"
+  description = "Resource group in which to create the Azure DNS zone. The script will create a random name if this is empty"
   default     = ""
 }
 

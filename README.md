@@ -123,7 +123,7 @@ jx project
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | apex\_domain\_integration\_enabled | Flag that when set attempts to create delegation records in apex domain to point to domain created by this module | `bool` | `false` | no |
-| apex\_domain\_name | The name of the parent/apex domain in which to create this domain zone, e.g. jenkins-x.io | `string` | `""` | no |
+| apex\_domain\_name | The name of the parent/apex domain in which to create this domain zone, e.g. jenkins-x.io. Required if dns\_enabled set to true | `string` | `""` | no |
 | apex\_resource\_group\_name | The resource group in which the Azure DNS apex domain resides. Required if apex\_domain\_integration\_enabled is true | `string` | `""` | no |
 | cluster\_name | Variable to provide your desired name for the cluster. The script will create a random name if this is empty | `string` | `""` | no |
 | cluster\_network\_model | Variable to define the network model for the cluster. Valid values are either `kubenet` or `azure` | `string` | `"kubenet"` | no |
@@ -132,8 +132,8 @@ jx project
 | cluster\_version | Kubernetes version to use for the AKS cluster | `string` | `"1.18.10"` | no |
 | dns\_enabled | Flag that when set creates an Azure DNS zone for JX | `bool` | `false` | no |
 | dns\_prefix | DNS prefix for the cluster. The script will create a random name if this is empty | `string` | `""` | no |
-| dns\_resource\_group\_name | Resource group in which to create the Azure DNS zone | `string` | `""` | no |
-| domain\_name | The domain name of the zone to create, e.g. dev-subdomain | `string` | `""` | no |
+| dns\_resource\_group\_name | Resource group in which to create the Azure DNS zone. The script will create a random name if this is empty | `string` | `""` | no |
+| domain\_name | The domain name of the zone to create, e.g. dev-subdomain. Required if dns\_enabled set to true | `string` | `""` | no |
 | enable\_log\_analytics | Flag to indicate whether to enable Log Analytics integration for cluster | `bool` | `false` | no |
 | jx\_bot\_token | Bot token used to interact with the Jenkins X cluster git repository | `string` | n/a | yes |
 | jx\_bot\_username | Bot username used to interact with the Jenkins X cluster git repository | `string` | n/a | yes |

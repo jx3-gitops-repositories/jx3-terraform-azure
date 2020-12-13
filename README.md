@@ -119,6 +119,7 @@ jx project
 ```
 
 ## Terraform Inputs
+
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | apex\_domain\_integration\_enabled | Flag that when set attempts to create delegation records in apex domain to point to domain created by this module | `bool` | `false` | no |
@@ -137,6 +138,10 @@ jx project
 | jx\_bot\_token | Bot token used to interact with the Jenkins X cluster git repository | `string` | n/a | yes |
 | jx\_bot\_username | Bot username used to interact with the Jenkins X cluster git repository | `string` | n/a | yes |
 | jx\_git\_url | URL for the Jenkins X cluster git repository | `string` | n/a | yes |
+| key\_vault\_enabled | Flag to indicate whether to provision Azure Key Vault for secret storage | `string` | `false` | no |
+| key\_vault\_name | Name of Azure Key Vault to create | `string` | `""` | no |
+| key\_vault\_resource\_group\_name | Resouce group to create in which to place key vault | `string` | `""` | no |
+| key\_vault\_sku | SKU of the Key Vault resource to create. Valid values are standard or premium | `string` | `"standard"` | no |
 | location | The Azure region in to which to provision the cluster | `string` | `"australiaeast"` | no |
 | logging\_retention\_days | Number of days to retain logs in Log Analytics if enabled | `number` | `30` | no |
 | network\_name | The name of the Virtual Network in Azure to be created. The script will create a random name if this is empty | `string` | `""` | no |
@@ -145,7 +150,6 @@ jx project
 | node\_size | The size of the worker node to use for the cluster | `string` | `"Standard_B2ms"` | no |
 | subnet\_cidr | The CIDR of the provisioned  subnet within the `vnet_cidr` to to which worker nodes are placed | `string` | `"10.8.0.0/24"` | no |
 | subnet\_name | The name of the subnet in Azure to be created. The script will create a random name if this is empty | `string` | `""` | no |
-| subscription\_id | The subscription id in which to create the Azure DNS zone | `string` | `""` | no |
 | vnet\_cidr | The CIDR of the provisioned Virtual Network in Azure in to which worker nodes are placed | `string` | `"10.8.0.0/16"` | no |
 
 # Cleanup

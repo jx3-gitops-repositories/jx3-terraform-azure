@@ -135,11 +135,6 @@ variable "dns_resource_group_name" {
   description = "Resource group in which to create the Azure DNS zone"
   default     = ""
 }
-variable "subscription_id" {
-  type        = string
-  description = "The subscription id in which to create the Azure DNS zone"
-  default     = ""
-}
 
 // ----------------------------------------------------------------------------
 // Secret storage variables

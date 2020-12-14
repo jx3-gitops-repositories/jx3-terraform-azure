@@ -1,10 +1,14 @@
 locals {
   jx_requirerments_interpolated_content = templatefile("${path.module}/jx-requirements.yml.tpl", {
 
-    registry_name     = "${module.registry.registry_name}.azurecr.io"
-    domain_name       = module.dns.domain
-    key_vault_enabled = var.key_vault_enabled
-    key_vault_name    = module.secrets.key_vault_name
+    registry_name       = "${module.registry.registry_name}.azurecr.io"
+    domain_name         = module.dns.domain
+    dns_enabled         = var.dns_enabled
+    dns_resource_group  = module.dns.resource_group_name
+    dns_tenant_id       = module.dns.tenant_id
+    dns_subscription_id = module.dns.subscription_id
+    key_vault_enabled   = var.key_vault_enabled
+    key_vault_name      = module.secrets.key_vault_name
   })
 
   jx_requirements_split_content   = split("\n", local.jx_requirerments_interpolated_content)

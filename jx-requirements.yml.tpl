@@ -10,7 +10,7 @@ cluster:
 %{ if dns_enabled }
     dns:
       resourceGroup: ${dns_resource_group}
-      tenant_id: ${dns_tenant_id}
+      tenantId: ${dns_tenant_id}
       subscriptionId: ${dns_subscription_id}
 %{ endif }
 %{ endif }

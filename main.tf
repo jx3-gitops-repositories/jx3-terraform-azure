@@ -114,6 +114,6 @@ output "follow_install_logs" {
 }
 
 output "docs" {
-  description = "Follow Jenkins X 3.x alpha docs for more information"
+  description = "Follow Jenkins X 3.x docs for more information"
   value       = "https://jenkins-x.io/v3/"
 }

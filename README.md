@@ -52,36 +52,36 @@ __Note: remember to create the Git repositories below in your Git organisation r
     
     Note: Ensure **Owner** is the name of the Git organisation that will hold the GitOps repositories used for Jenkins X.
 
+    If you choose Azure Key Vault, be sure to set `key_vault_enabled` to `"true"` in the terraform values of your infrastructure repository.
+
 3. You need to configure the git URL of your **Cluster** git repository (which contains `helmfile.yaml`) into the **Infrastructure** git repository (which contains `main.tf`). 
 
 So from inside a git clone of the **Infrastructure** git repository (which already has the files `main.tf` and `values.auto.tfvars` inside) you need to link to the other **Cluster** repository (which contains `helmfile.yaml`) by committing the required terraform values from below to your `values.auto.tfvars`, e.g.
 
 ```sh
 cat <<EOF >> values.auto.tfvars    
-jx_git_url = "https://github.com/$git_owner_from_cluster_template_above/$git_repo_from_cluster_template_above"
+jx_git_url = "https://github.com/<your-org>/<your-infrastructure-repo>"
 EOF
 ```
 
 The contents of your `values.auto.tfvars` file should look something like this:
 
 ```terraform
-jx_git_url = "https://github.com/myowner/myname-cluster"
-jx_bot_username = "bot_user"
-jx_bot_token = "abcdef12345"
+jx_git_url = "https://github.com/<your-org>/<your-infrastructure-repo>"
+jx_bot_username = "<your-bot-username>"
 ```
 
 4. Commit and push these changes to your **Infrastructure** git repository:
 
 ```sh
-git commit -a -m "fix: configure cluster repository and project"
+git commit -a -m "fix: configure cluster repository and bot username"
 git push
 ```
 
 5. Now define 2 environment variables to pass the bot user and token into Terraform:
 
 ```sh
-export TF_VAR_jx_bot_username=my-bot-username
-export TF_VAR_jx_bot_token=my-bot-token
+export TF_VAR_jx_bot_token=<your-bot-token>
 ```
 
 6. Now, initialize, plan and apply Terraform:

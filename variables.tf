@@ -1,5 +1,5 @@
 variable "cluster_name" {
-  description = "Variable to provide your desired name for the cluster. The script will create a random name if this is empty"
+  description = "Variable to provide the desired name for the cluster. The script will create a random name if this is empty"
   type        = string
   default     = ""
 }
@@ -48,7 +48,7 @@ variable "dns_prefix" {
 variable "cluster_version" {
   type        = string
   default     = "1.18.10"
-  description = "Kubernetes version to use for the AKS cluster"
+  description = "Kubernetes version to use for the cluster"
 }
 variable "network_resource_group_name" {
   type        = string
@@ -58,12 +58,12 @@ variable "network_resource_group_name" {
 variable "cluster_resource_group_name" {
   type        = string
   default     = ""
-  description = "The name of the resource group in to which to provision AKS managed cluster. The script will create a random name if this is empty"
+  description = "The name of the resource group in to which to provision the cluster. The script will create a random name if this is empty"
 }
 variable "cluster_node_resource_group_name" {
   type        = string
   default     = ""
-  description = "Resource group name in which to provision AKS cluster nodes. The script will create a random name if this is empty"
+  description = "Resource group name in which to provision the cluster nodes. The script will create a random name if this is empty"
 }
 variable "vnet_cidr" {
   type        = string
@@ -73,7 +73,7 @@ variable "vnet_cidr" {
 variable "subnet_cidr" {
   type        = string
   default     = "10.8.0.0/24"
-  description = "The CIDR of the provisioned  subnet within the `vnet_cidr` to to which worker nodes are placed"
+  description = "The CIDR of the provisioned subnet within the `vnet_cidr` to to which worker nodes are placed"
 }
 variable "network_name" {
   type        = string
@@ -83,7 +83,7 @@ variable "network_name" {
 variable "cluster_network_model" {
   type        = string
   default     = "kubenet"
-  description = "Variable to define the network model for the cluster. Valid values are either `kubenet` or `azure`"
+  description = "Variable to define the network model for the cluster. Valid values are either \"kubenet\" or \"azure\""
 }
 variable "subnet_name" {
   type        = string
@@ -113,21 +113,21 @@ variable "apex_domain_integration_enabled" {
 variable "dns_enabled" {
   type        = bool
   default     = false
-  description = "Flag that when set creates an Azure DNS zone for JX"
+  description = "Flag that when set creates an Azure DNS zone for Jenkins X"
 }
 variable "apex_domain_name" {
   type        = string
-  description = "The name of the parent/apex domain in which to create this domain zone, e.g. jenkins-x.io. Required if dns_enabled set to true"
+  description = "The name of the parent/apex domain in which to create this domain zone, e.g. \"jenkins-x.io\". Required if `dns_enabled` set to true"
   default     = ""
 }
 variable "domain_name" {
   type        = string
-  description = "The domain name of the zone to create, e.g. dev-subdomain. Required if dns_enabled set to true"
+  description = "The domain name of the zone to create, e.g. \"dev-subdomain\". Required if `dns_enabled` set to true"
   default     = ""
 }
 variable "apex_resource_group_name" {
   type        = string
-  description = "The resource group in which the Azure DNS apex domain resides. Required if apex_domain_integration_enabled is true"
+  description = "The resource group in which the Azure DNS apex domain resides. Required if `apex_domain_integration_enabled` is true"
   default     = ""
 }
 variable "dns_resource_group_name" {
@@ -147,7 +147,7 @@ variable "key_vault_enabled" {
 }
 variable "key_vault_resource_group_name" {
   type        = string
-  description = "Resouce group to create in which to place key vault"
+  description = "Resource group to create in which to place Azure Key Vault"
   default     = ""
 }
 variable "key_vault_name" {
@@ -157,6 +157,6 @@ variable "key_vault_name" {
 }
 variable "key_vault_sku" {
   type        = string
-  description = "SKU of the Key Vault resource to create. Valid values are standard or premium"
+  description = "SKU of the Azure Key Vault resource to create. Valid values are \"standard\" or \"premium\""
   default     = "standard"
 }

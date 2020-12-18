@@ -117,3 +117,7 @@ output "docs" {
   description = "Follow Jenkins X 3.x docs for more information"
   value       = "https://jenkins-x.io/v3/"
 }
+
+output "kube_config_admin" {
+  value = module.cluster.kube_config_admin_raw
+}

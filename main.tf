@@ -31,7 +31,6 @@ provider "kubernetes" {
 
 provider "helm" {
   kubernetes {
-    load_config_file = false
 
     host = module.cluster.cluster_endpoint
     cluster_ca_certificate = base64decode(

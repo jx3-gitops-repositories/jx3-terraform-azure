@@ -11,7 +11,11 @@ terraform {
 }
 
 provider "azurerm" {
-  features {}
+  features {
+    key_vault {
+      purge_soft_delete_on_destroy = false
+    }
+  }
 }
 
 provider "kubernetes" {
@@ -100,6 +104,7 @@ module "secrets" {
   key_vault_name      = var.key_vault_name
   key_vault_sku       = var.key_vault_sku
   location            = var.location
+  secret_map          = local.merged_secrets
 }
 
 output "connect" {

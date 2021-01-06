@@ -20,6 +20,9 @@ environments:
   - key: dev
 ingress:
   domain: ${domain_name}
+%{ if dns_enabled }
+  externalDNS: true
+%{ endif }
   tls: {}
 %{ if key_vault_enabled }
 secretStorage: azurekeyvault

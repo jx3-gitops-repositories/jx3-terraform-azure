@@ -1,6 +1,8 @@
 cluster:
   provider: aks
   registry: ${registry_name}
+  chartRepository: ${registry_name}
+  chartOCI: true
 %{ if key_vault_enabled || dns_enabled }
   azure:
 %{ if key_vault_enabled }

@@ -138,7 +138,7 @@ jx project
 | jx\_bot\_token | Bot token used to interact with the Jenkins X cluster git repository | `string` | n/a | yes |
 | jx\_bot\_username | Bot username used to interact with the Jenkins X cluster git repository | `string` | n/a | yes |
 | jx\_git\_url | URL for the Jenkins X cluster git repository | `string` | n/a | yes |
-| key\_vault\_enabled | Flag to indicate whether to provision Azure Key Vault for secret storage | `string` | `false` | no |
+| key\_vault\_enabled | Flag to indicate whether to provision Azure Key Vault for secret storage | `string` | `true` | no |
 | key\_vault\_name | Name of Azure Key Vault to create | `string` | `""` | no |
 | key\_vault\_resource\_group\_name | Resource group to create in which to place key vault | `string` | `""` | no |
 | key\_vault\_sku | SKU of the Key Vault resource to create. Valid values are standard or premium | `string` | `"standard"` | no |

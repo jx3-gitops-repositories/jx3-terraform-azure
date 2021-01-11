@@ -140,7 +140,7 @@ jx project
 | jx\_git\_url | URL for the Jenkins X cluster git repository | `string` | n/a | yes |
 | key\_vault\_enabled | Flag to indicate whether to provision Azure Key Vault for secret storage | `string` | `false` | no |
 | key\_vault\_name | Name of Azure Key Vault to create | `string` | `""` | no |
-| key\_vault\_resource\_group\_name | Resouce group to create in which to place key vault | `string` | `""` | no |
+| key\_vault\_resource\_group\_name | Resource group to create in which to place key vault | `string` | `""` | no |
 | key\_vault\_sku | SKU of the Key Vault resource to create. Valid values are standard or premium | `string` | `"standard"` | no |
 | location | The Azure region in to which to provision the cluster | `string` | `"australiaeast"` | no |
 | logging\_retention\_days | Number of days to retain logs in Log Analytics if enabled | `number` | `30` | no |

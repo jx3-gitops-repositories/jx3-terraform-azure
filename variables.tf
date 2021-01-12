@@ -160,3 +160,14 @@ variable "key_vault_sku" {
   description = "SKU of the Key Vault resource to create. Valid values are standard or premium"
   default     = "standard"
 }
+
+
+// ----------------------------------------------------------------------------
+// Storage variables
+// ---------------------------------------------------------------------------
+
+variable "storage_resource_group_name" {
+  type        = string
+  description = "Resource group to create in which to place storage accounts"
+  default     = ""
+}

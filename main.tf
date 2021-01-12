@@ -107,6 +107,14 @@ module "secrets" {
   secret_map          = local.merged_secrets
 }
 
+module "storage" {
+  source               = "github.com/chrismellard/terraform-jx-azure-storage?ref=master"
+  resource_group_name  = var.storage_resource_group_name
+  cluster_name         = local.cluster_name
+  location             = var.location
+  storage_principal_id = module.cluster.kubelet_identity_id
+}
+
 output "connect" {
   description = "Connect to cluster"
   value       = module.cluster.connect
@@ -123,6 +131,6 @@ output "docs" {
 }
 
 output "kube_config_admin" {
-  value = module.cluster.kube_config_admin_raw
+  value     = module.cluster.kube_config_admin_raw
   sensitive = true
 }

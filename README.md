@@ -148,6 +148,7 @@ jx project
 | network\_resource\_group\_name | The name of the resource group in to which to provision network resources. The script will create a random name if this is empty | `string` | `""` | no |
 | node\_count | The number of worker nodes to use for the cluster | `number` | `2` | no |
 | node\_size | The size of the worker node to use for the cluster | `string` | `"Standard_B2ms"` | no |
+| storage\_resource\_group\_name | Resource group to create in which to place storage accounts | `string` | `""` | no |
 | subnet\_cidr | The CIDR of the provisioned  subnet within the `vnet_cidr` to to which worker nodes are placed | `string` | `"10.8.0.0/24"` | no |
 | subnet\_name | The name of the subnet in Azure to be created. The script will create a random name if this is empty | `string` | `""` | no |
 | vnet\_cidr | The CIDR of the provisioned Virtual Network in Azure in to which worker nodes are placed | `string` | `"10.8.0.0/16"` | no |

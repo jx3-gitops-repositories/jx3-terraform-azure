@@ -1,5 +1,5 @@
 module "cluster" {
-  source                           = "github.com/chrismellard/terraform-jx-azure?ref=master"
+  source                           = "github.com/jenkins-x-terraform/terraform-jx-azure?ref=master"
   apex_domain_integration_enabled  = var.apex_domain_integration_enabled
   apex_domain_name                 = var.apex_domain_name
   apex_resource_group_name         = var.apex_resource_group_name

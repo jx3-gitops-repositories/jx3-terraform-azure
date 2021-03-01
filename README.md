@@ -67,7 +67,6 @@ The contents of your `values.auto.tfvars` file should look something like this .
 ```terraform
 jx_git_url = "https://github.com/myowner/myname-cluster"
 jx_bot_username = "bot_user"
-jx_bot_token = "abcdef12345"
 ```
 
 4. commit and push any changes to your **Infrastructure** git repository:
@@ -80,7 +79,6 @@ git push
 5. Now define 2 environment variables to pass the bot user and token into Terraform:
 
 ```sh
-export TF_VAR_jx_bot_username=my-bot-username
 export TF_VAR_jx_bot_token=my-bot-token
 ```
 

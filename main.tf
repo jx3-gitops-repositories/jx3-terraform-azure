@@ -1,17 +1,16 @@
 module "cluster" {
   source                           = "github.com/jenkins-x-terraform/terraform-jx-azure?ref=v0.1.0"
   apex_domain_integration_enabled  = var.apex_domain_integration_enabled
-  apex_domain_name                 = var.apex_domain_name
+  apex_domain                      = var.apex_domain
   apex_resource_group_name         = var.apex_resource_group_name
   cluster_name                     = var.cluster_name
   cluster_network_model            = var.cluster_network_model
   cluster_node_resource_group_name = var.cluster_node_resource_group_name
   cluster_resource_group_name      = var.cluster_resource_group_name
   cluster_version                  = var.cluster_version
-  dns_enabled                      = var.dns_enabled
   dns_resource_group_name          = var.dns_resource_group_name
   dns_prefix                       = var.dns_prefix
-  domain_name                      = var.domain_name
+  subdomain                        = var.subdomain
   enable_log_analytics             = var.enable_log_analytics
   jx_bot_token                     = var.jx_bot_token
   jx_git_url                       = var.jx_git_url

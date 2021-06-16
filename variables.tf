@@ -47,7 +47,7 @@ variable "dns_prefix" {
 }
 variable "cluster_version" {
   type        = string
-  default     = "1.20.5"
+  default     = "1.20.7"
   description = "Kubernetes version to use for the AKS cluster"
 }
 variable "network_resource_group_name" {
@@ -110,19 +110,14 @@ variable "apex_domain_integration_enabled" {
   default     = false
   description = "Flag that when set attempts to create delegation records in apex domain to point to domain created by this module"
 }
-variable "dns_enabled" {
-  type        = bool
-  default     = false
-  description = "Flag that when set creates an Azure DNS zone for JX"
-}
-variable "apex_domain_name" {
+variable "apex_domain" {
   type        = string
   description = "The name of the parent/apex domain in which to create this domain zone, e.g. jenkins-x.io. Required if dns_enabled set to true"
   default     = ""
 }
-variable "domain_name" {
+variable "subdomain" {
   type        = string
-  description = "The domain name of the zone to create, e.g. dev-subdomain. Required if dns_enabled set to true"
+  description = "The subdomain name of the zone to create, e.g. dev-subdomain."
   default     = ""
 }
 variable "apex_resource_group_name" {
@@ -159,6 +154,28 @@ variable "key_vault_sku" {
   type        = string
   description = "SKU of the Key Vault resource to create. Valid values are standard or premium"
   default     = "standard"
+}
+
+
+// ----------------------------------------------------------------------------
+// Registry variables
+// ---------------------------------------------------------------------------
+variable "registry_resource_group_name" {
+  type        = string
+  default     = ""
+  description = "The name of the resource group in to which to provision ACR managed registry. The script will create a random name if this is empty"
+}
+
+variable "use_existing_acr_name" {
+  description = "Name of the existing ACR that you would like to use, e.g. use this in multicluster setup, when you want to use DEV cluster ACR."
+  type        = string
+  default     = null
+}
+
+variable "use_existing_acr_resource_group_name" {
+  description = "Name of the resources group of the existing ACR that you would like to use, e.g. use this in multicluster setup, when you want to use DEV cluster ACR."
+  type        = string
+  default     = null
 }
 
 

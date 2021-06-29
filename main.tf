@@ -1,5 +1,5 @@
 module "cluster" {
-  source                               = "github.com/jenkins-x-terraform/terraform-jx-azure?ref=v0.1.0"
+  source                               = "github.com/jenkins-x-terraform/terraform-jx-azure?ref=v0.3.0"
   apex_domain_integration_enabled      = var.apex_domain_integration_enabled
   apex_domain                          = var.apex_domain
   subdomain                            = var.subdomain

@@ -1,5 +1,5 @@
 module "cluster" {
-  source                               = "github.com/jenkins-x-terraform/terraform-jx-azure?ref=v0.4.1"
+  source                               = "github.com/jenkins-x-terraform/terraform-jx-azure?ref=v0.5.0"
   apex_domain_integration_enabled      = var.apex_domain_integration_enabled
   apex_domain                          = var.apex_domain
   subdomain                            = var.subdomain
@@ -14,6 +14,7 @@ module "cluster" {
   jx_bot_token                         = var.jx_bot_token
   jx_git_url                           = var.jx_git_url
   jx_bot_username                      = var.jx_bot_username
+  server_side_apply_enabled            = var.server_side_apply_enabled
   key_vault_enabled                    = var.key_vault_enabled
   key_vault_name                       = var.key_vault_name
   key_vault_resource_group_name        = var.key_vault_resource_group_name

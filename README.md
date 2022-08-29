@@ -25,6 +25,7 @@ Jenkins X likes to use GitOps to manage the lifecycle of both infrastructure and
   Add the new `bot` user to your Git Organisation, for now give it Owner permissions, we will reduce this to member permissions soon.
 - Install `terraform` CLI - [see here](https://learn.hashicorp.com/tutorials/terraform/install-cli#install-terraform)
 - Install `jx` CLI - [see here](https://github.com/jenkins-x/jx-cli/releases)
+- An Azure account, with the required tools as described in this [guide](https://jenkins-x.io/v3/admin/platforms/azure/svc_principal/) 
 
 # Git repositories
 
@@ -54,13 +55,7 @@ __Note: remember to create the Git repositories below in your Git Organisation r
 
 3. You need to configure the git URL of your **Cluster** git repository (which contains `helmfile.yaml`) into the **Infrastructure** git repository (which contains `main.tf`). 
 
-So from inside a git clone of the **Infrastructure** git repository (which already has the files `main.tf` and `values.auto.tfvars` inside) you need to link to the other **Cluster** repository (which contains `helmfile.yaml`) by committing the required terraform values from below to your `values.auto.tfvars`, e.g.
-
-```sh
-cat <<EOF >> values.auto.tfvars    
-jx_git_url = "https://github.com/$git_owner_from_cluster_template_above/$git_repo_from_cluster_template_above"
-EOF
-```
+So from inside a git clone of the **Infrastructure** git repository (which already has the file `main.tf` inside) you need to link to the other **Cluster** repository (which contains `helmfile.yaml`) by committing the required terraform values from below. 
 
 The contents of your `values.auto.tfvars` file should look something like this ....
 
@@ -76,7 +71,7 @@ git commit -a -m "fix: configure cluster repository and project"
 git push
 ```
 
-5. Now define 2 environment variables to pass the bot user and token into Terraform:
+5. Now define an environment variable to pass the token into Terraform:
 
 ```sh
 export TF_VAR_jx_bot_token=my-bot-token

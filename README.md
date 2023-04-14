@@ -115,36 +115,47 @@ jx project
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| apex\_domain\_integration\_enabled | Flag that when set attempts to create delegation records in apex domain to point to domain created by this module | `bool` | `false` | no |
-| apex\_domain\_name | The name of the parent/apex domain in which to create this domain zone, e.g. jenkins-x.io. Required if dns\_enabled set to true | `string` | `""` | no |
-| apex\_resource\_group\_name | The resource group in which the Azure DNS apex domain resides. Required if apex\_domain\_integration\_enabled is true | `string` | `""` | no |
-| cluster\_name | Variable to provide your desired name for the cluster. The script will create a random name if this is empty | `string` | `""` | no |
-| cluster\_network\_model | Variable to define the network model for the cluster. Valid values are either `kubenet` or `azure` | `string` | `"kubenet"` | no |
-| cluster\_node\_resource\_group\_name | Resource group name in which to provision AKS cluster nodes. The script will create a random name if this is empty | `string` | `""` | no |
-| cluster\_resource\_group\_name | The name of the resource group in to which to provision AKS managed cluster. The script will create a random name if this is empty | `string` | `""` | no |
-| cluster\_version | Kubernetes version to use for the AKS cluster | `string` | `"1.18.10"` | no |
-| dns\_enabled | Flag that when set creates an Azure DNS zone for JX | `bool` | `false` | no |
-| dns\_prefix | DNS prefix for the cluster. The script will create a random name if this is empty | `string` | `""` | no |
-| dns\_resource\_group\_name | Resource group in which to create the Azure DNS zone. The script will create a random name if this is empty | `string` | `""` | no |
-| domain\_name | The domain name of the zone to create, e.g. dev-subdomain. Required if dns\_enabled set to true | `string` | `""` | no |
-| enable\_log\_analytics | Flag to indicate whether to enable Log Analytics integration for cluster | `bool` | `false` | no |
-| jx\_bot\_token | Bot token used to interact with the Jenkins X cluster git repository | `string` | n/a | yes |
-| jx\_bot\_username | Bot username used to interact with the Jenkins X cluster git repository | `string` | n/a | yes |
-| jx\_git\_url | URL for the Jenkins X cluster git repository | `string` | n/a | yes |
-| key\_vault\_enabled | Flag to indicate whether to provision Azure Key Vault for secret storage | `string` | `true` | no |
-| key\_vault\_name | Name of Azure Key Vault to create | `string` | `""` | no |
-| key\_vault\_resource\_group\_name | Resource group to create in which to place key vault | `string` | `""` | no |
-| key\_vault\_sku | SKU of the Key Vault resource to create. Valid values are standard or premium | `string` | `"standard"` | no |
-| location | The Azure region in to which to provision the cluster | `string` | `"australiaeast"` | no |
-| logging\_retention\_days | Number of days to retain logs in Log Analytics if enabled | `number` | `30` | no |
-| network\_name | The name of the Virtual Network in Azure to be created. The script will create a random name if this is empty | `string` | `""` | no |
-| network\_resource\_group\_name | The name of the resource group in to which to provision network resources. The script will create a random name if this is empty | `string` | `""` | no |
-| node\_count | The number of worker nodes to use for the cluster | `number` | `2` | no |
-| node\_size | The size of the worker node to use for the cluster | `string` | `"Standard_B2ms"` | no |
-| storage\_resource\_group\_name | Resource group to create in which to place storage accounts | `string` | `""` | no |
-| subnet\_cidr | The CIDR of the provisioned  subnet within the `vnet_cidr` to to which worker nodes are placed | `string` | `"10.8.0.0/24"` | no |
-| subnet\_name | The name of the subnet in Azure to be created. The script will create a random name if this is empty | `string` | `""` | no |
-| vnet\_cidr | The CIDR of the provisioned Virtual Network in Azure in to which worker nodes are placed | `string` | `"10.8.0.0/16"` | no |
+| <a name="input_apex_domain"></a> [apex\_domain](#input\_apex\_domain) | The name of the parent/apex domain in which to create this domain zone, e.g. jenkins-x.io. Required if dns\_enabled set to true | `string` | `""` | no |
+| <a name="input_apex_domain_integration_enabled"></a> [apex\_domain\_integration\_enabled](#input\_apex\_domain\_integration\_enabled) | Flag that when set attempts to create delegation records in apex domain to point to domain created by this module | `bool` | `false` | no |
+| <a name="input_apex_resource_group_name"></a> [apex\_resource\_group\_name](#input\_apex\_resource\_group\_name) | The resource group in which the Azure DNS apex domain resides. Required if apex\_domain\_integration\_enabled is true | `string` | `""` | no |
+| <a name="input_build_node_count"></a> [build\_node\_count](#input\_build\_node\_count) | The number of build nodes to use for the cluster | `number` | `null` | no |
+| <a name="input_build_node_size"></a> [build\_node\_size](#input\_build\_node\_size) | The size of the build node to use for the cluster | `string` | `""` | no |
+| <a name="input_cluster_name"></a> [cluster\_name](#input\_cluster\_name) | Variable to provide your desired name for the cluster. The script will create a random name if this is empty | `string` | `""` | no |
+| <a name="input_cluster_network_model"></a> [cluster\_network\_model](#input\_cluster\_network\_model) | Variable to define the network model for the cluster. Valid values are either `kubenet` or `azure` | `string` | `"kubenet"` | no |
+| <a name="input_cluster_node_resource_group_name"></a> [cluster\_node\_resource\_group\_name](#input\_cluster\_node\_resource\_group\_name) | Resource group name in which to provision AKS cluster nodes. The script will create a random name if this is empty | `string` | `""` | no |
+| <a name="input_cluster_resource_group_name"></a> [cluster\_resource\_group\_name](#input\_cluster\_resource\_group\_name) | The name of the resource group in to which to provision AKS managed cluster. The script will create a random name if this is empty | `string` | `""` | no |
+| <a name="input_cluster_version"></a> [cluster\_version](#input\_cluster\_version) | Kubernetes version to use for the AKS cluster | `string` | `"1.20.7"` | no |
+| <a name="input_dns_prefix"></a> [dns\_prefix](#input\_dns\_prefix) | DNS prefix for the cluster. The script will create a random name if this is empty | `string` | `""` | no |
+| <a name="input_dns_resource_group_name"></a> [dns\_resource\_group\_name](#input\_dns\_resource\_group\_name) | Resource group in which to create the Azure DNS zone. The script will create a random name if this is empty | `string` | `""` | no |
+| <a name="input_enable_log_analytics"></a> [enable\_log\_analytics](#input\_enable\_log\_analytics) | Flag to indicate whether to enable Log Analytics integration for cluster | `bool` | `false` | no |
+| <a name="input_jx_bot_token"></a> [jx\_bot\_token](#input\_jx\_bot\_token) | Bot token used to interact with the Jenkins X cluster git repository | `string` | n/a | yes |
+| <a name="input_jx_bot_username"></a> [jx\_bot\_username](#input\_jx\_bot\_username) | Bot username used to interact with the Jenkins X cluster git repository | `string` | n/a | yes |
+| <a name="input_jx_git_url"></a> [jx\_git\_url](#input\_jx\_git\_url) | URL for the Jenkins X cluster git repository | `string` | n/a | yes |
+| <a name="input_key_vault_enabled"></a> [key\_vault\_enabled](#input\_key\_vault\_enabled) | Flag to indicate whether to provision Azure Key Vault for secret storage | `string` | `true` | no |
+| <a name="input_key_vault_name"></a> [key\_vault\_name](#input\_key\_vault\_name) | Name of Azure Key Vault to create | `string` | `""` | no |
+| <a name="input_key_vault_resource_group_name"></a> [key\_vault\_resource\_group\_name](#input\_key\_vault\_resource\_group\_name) | Resource group to create in which to place key vault | `string` | `""` | no |
+| <a name="input_key_vault_sku"></a> [key\_vault\_sku](#input\_key\_vault\_sku) | SKU of the Key Vault resource to create. Valid values are standard or premium | `string` | `"standard"` | no |
+| <a name="input_location"></a> [location](#input\_location) | The Azure region in to which to provision the cluster | `string` | `"australiaeast"` | no |
+| <a name="input_logging_retention_days"></a> [logging\_retention\_days](#input\_logging\_retention\_days) | Number of days to retain logs in Log Analytics if enabled | `number` | `30` | no |
+| <a name="input_max_build_node_count"></a> [max\_build\_node\_count](#input\_max\_build\_node\_count) | The maximum number of builder nodes to use for the cluster if autoscaling is enabled | `number` | `null` | no |
+| <a name="input_max_node_count"></a> [max\_node\_count](#input\_max\_node\_count) | The maximum number of worker nodes to use for the cluster if autoscaling is enabled | `number` | `null` | no |
+| <a name="input_min_build_node_count"></a> [min\_build\_node\_count](#input\_min\_build\_node\_count) | The minimum number of builder nodes to use for the cluster if autoscaling is enabled | `number` | `null` | no |
+| <a name="input_min_node_count"></a> [min\_node\_count](#input\_min\_node\_count) | The minimum number of worker nodes to use for the cluster if autoscaling is enabled | `number` | `null` | no |
+| <a name="input_network_name"></a> [network\_name](#input\_network\_name) | The name of the Virtual Network in Azure to be created. The script will create a random name if this is empty | `string` | `""` | no |
+| <a name="input_network_resource_group_name"></a> [network\_resource\_group\_name](#input\_network\_resource\_group\_name) | The name of the resource group in to which to provision network resources. The script will create a random name if this is empty | `string` | `""` | no |
+| <a name="input_node_count"></a> [node\_count](#input\_node\_count) | The number of worker nodes to use for the cluster | `number` | `2` | no |
+| <a name="input_node_size"></a> [node\_size](#input\_node\_size) | The size of the worker node to use for the cluster | `string` | `"Standard_B2ms"` | no |
+| <a name="input_registry_resource_group_name"></a> [registry\_resource\_group\_name](#input\_registry\_resource\_group\_name) | The name of the resource group in to which to provision ACR managed registry. The script will create a random name if this is empty | `string` | `""` | no |
+| <a name="input_server_side_apply_enabled"></a> [server\_side\_apply\_enabled](#input\_server\_side\_apply\_enabled) | BETA: Flag to indicate to the jx-git-operator that you would like to use server side apply | `bool` | `false` | no |
+| <a name="input_spot_max_price"></a> [spot\_max\_price](#input\_spot\_max\_price) | The maximum price you're willing to pay in USD per virtual machine, -1 to go to the maximum price | `number` | `-1` | no |
+| <a name="input_storage_resource_group_name"></a> [storage\_resource\_group\_name](#input\_storage\_resource\_group\_name) | Resource group to create in which to place storage accounts | `string` | `""` | no |
+| <a name="input_subdomain"></a> [subdomain](#input\_subdomain) | The subdomain name of the zone to create, e.g. dev-subdomain. | `string` | `""` | no |
+| <a name="input_subnet_cidr"></a> [subnet\_cidr](#input\_subnet\_cidr) | The CIDR of the provisioned  subnet within the `vnet_cidr` to to which worker nodes are placed | `string` | `"10.8.0.0/24"` | no |
+| <a name="input_subnet_name"></a> [subnet\_name](#input\_subnet\_name) | The name of the subnet in Azure to be created. The script will create a random name if this is empty | `string` | `""` | no |
+| <a name="input_use_existing_acr_name"></a> [use\_existing\_acr\_name](#input\_use\_existing\_acr\_name) | Name of the existing ACR that you would like to use, e.g. use this in multicluster setup, when you want to use DEV cluster ACR. | `string` | `null` | no |
+| <a name="input_use_existing_acr_resource_group_name"></a> [use\_existing\_acr\_resource\_group\_name](#input\_use\_existing\_acr\_resource\_group\_name) | Name of the resources group of the existing ACR that you would like to use, e.g. use this in multicluster setup, when you want to use DEV cluster ACR. | `string` | `null` | no |
+| <a name="input_use_spot"></a> [use\_spot](#input\_use\_spot) | Should we use spot instances for the build nodes | `bool` | `true` | no |
+| <a name="input_vnet_cidr"></a> [vnet\_cidr](#input\_vnet\_cidr) | The CIDR of the provisioned Virtual Network in Azure in to which worker nodes are placed | `string` | `"10.8.0.0/16"` | no |
 
 # Cleanup
 
